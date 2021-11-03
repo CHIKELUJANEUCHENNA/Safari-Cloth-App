@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigInteger;
+import java.util.List;
 
 
 @Builder
@@ -29,6 +30,8 @@ public class Product extends BaseClass {
 
     private String color;
     private String size;
+    @OneToMany
+    private List<ProductImages> imagesList;
 
 
     @ManyToOne

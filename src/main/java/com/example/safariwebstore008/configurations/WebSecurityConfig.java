@@ -47,7 +47,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/authenticate", "/signup", "/accountVerification/{token}", "/swagger-resources/**",
-                        "/v2/api-docs/**", "/swagger-ui/**").permitAll()
+                        "/v2/api-docs/**", "/swagger-ui/**", "/api/products/**").permitAll()
                 .antMatchers("/api/admin/").hasRole("ADMIN")
                 .anyRequest().authenticated().and()
                 .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and()

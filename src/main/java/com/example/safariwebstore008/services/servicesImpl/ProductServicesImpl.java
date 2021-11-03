@@ -1,6 +1,8 @@
 package com.example.safariwebstore008.services.servicesImpl;
 
 import com.example.safariwebstore008.models.Product;
+import com.example.safariwebstore008.models.ProductImages;
+import com.example.safariwebstore008.repositories.ProductImagesRepository;
 import com.example.safariwebstore008.repositories.ProductRepository;
 import com.example.safariwebstore008.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,9 @@ import java.util.List;
 @Service
 public class ProductServicesImpl implements ProductService {
     @Autowired
-    ProductRepository productRepository;
+    private ProductRepository productRepository;
+    @Autowired
+    private ProductImagesRepository productImagesRepository;
     @Override
     public List<Product> adminViewAllProductsPaginated(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
@@ -29,5 +33,10 @@ public class ProductServicesImpl implements ProductService {
     @Override
     public List<Product> searchProductsByKeyword(String keyword) {
         return productRepository.findProductsByProductNameContaining(keyword.toLowerCase());
+    }
+
+    @Override
+    public List<ProductImages> getAllProductImages() {
+        return productImagesRepository.findAll();
     }
 }

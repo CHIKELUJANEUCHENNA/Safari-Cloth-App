@@ -21,8 +21,8 @@ public class ProductImages extends BaseClass {
     @NotNull(message = "imageUrl isempty")
     private String imageURl;
 
-    @ManyToOne
-    private Product product;
+//    @ManyToOne
+//    private Product product;
 
 
 

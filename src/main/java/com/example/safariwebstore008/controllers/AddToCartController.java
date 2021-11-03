@@ -8,23 +8,22 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
-@Controller
+@RestController
 public class AddToCartController {
-    @Autowired
-    CartServiceImpl cartService;
-    @PreAuthorize("hasAuthority('CUSTOMER')")
-    @GetMapping("/add_to_cart/{id}")
-    public ResponseEntity<?> addToCart(@PathVariable Long id,HttpServletRequest req){
-        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext()
-                .getAuthentication().getPrincipal();
-        String email = userDetails.getUsername();
-        cartService.addToCart(id,email);
-        return  new ResponseEntity<Object>(HttpStatus.CREATED);
-    }
+//    @Autowired
+//    CartServiceImpl cartService;
+//    @PreAuthorize("hasAuthority('CUSTOMER')")
+//    @CrossOrigin(origins = "http://localhost:8080")
+//    @GetMapping("/add_to_cart/{id}")
+//    public ResponseEntity<?> addToCart(@PathVariable Long id,HttpServletRequest req){
+//        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext()
+//                .getAuthentication().getPrincipal();
+//        String email = userDetails.getUsername();
+//        cartService.addToCart(id,email);
+//        return  new ResponseEntity<Object>(HttpStatus.CREATED);
+//    }
 }
